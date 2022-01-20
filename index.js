@@ -3,10 +3,12 @@ for(var i=0;i<d.length;i++){
   d[i].addEventListener("click",function (){
     var k=this.innerHTML;
     makeSound(k);
+    Animation(k);
   });
 }
 document.addEventListener("keydown",function(event){
   makeSound(event.key);
+  Animation(event.key);
 });
 function makeSound(key){
   switch (key) {
@@ -40,4 +42,10 @@ function makeSound(key){
       break;
     default:console.log(key);
 }
+}
+function Animation(key){
+  document.querySelector("."+key).classList.add("pressed");
+  setTimeout(function(){
+    document.querySelector("."+key).classList.remove("pressed");
+  },100);
 }
